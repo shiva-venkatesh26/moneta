@@ -1,0 +1,32 @@
+# Binary (at root level only)
+/moneta
+/moneta-*
+
+# Test coverage
+coverage.out
+coverage.html
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Build artifacts
+dist/
+build/
+
+# Local data (don't commit your memories!)
+*.db
+*.db-wal
+*.db-shm
+
+# Air (hot reload)
+tmp/
+
+# Model files
+*.onnx

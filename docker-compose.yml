@@ -1,0 +1,30 @@
+version: '3.8'
+
+services:
+  moneta:
+    build: .
+    ports:
+      - "3456:3456"
+    volumes:
+      # Persist data across container restarts
+      - moneta-data:/data
+      # Optional: mount Ollama socket for faster embedding
+      # - /var/run/ollama:/var/run/ollama
+    environment:
+      - MONETA_DATA_DIR=/data
+      - OLLAMA_HOST=http://host.docker.internal:11434
+    restart: unless-stopped
+
+  # Optional: Run Ollama in Docker (heavy, ~2GB)
+  # Uncomment if you don't have Ollama installed locally
+  # ollama:
+  #   image: ollama/ollama:latest
+  #   ports:
+  #     - "11434:11434"
+  #   volumes:
+  #     - ollama-models:/root/.ollama
+  #   restart: unless-stopped
+
+volumes:
+  moneta-data:
+  # ollama-models:
